@@ -11,7 +11,7 @@ export default function AttendanceDate({ navigation, route }) {
   const getStudents = async () => {
     try {
       const response = await axios.get(
-        `http://${GLOBAL_CONFIG.SYSTEM_IP}/api/Attendance/attendance`,
+        `https//${GLOBAL_CONFIG.SYSTEM_IP}/api/Attendance/attendance`,
         { params: { course, date } }
       );
       console.log("Students:", response.data);

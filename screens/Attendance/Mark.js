@@ -14,7 +14,7 @@ export default function Mark({ navigation, route }) {
   const getStudents = async () => {
     try {
       const response = await axios.get(
-        `http://${GLOBAL_CONFIG.SYSTEM_IP}/api/Attendance/attendance`,
+        `https//${GLOBAL_CONFIG.SYSTEM_IP}/api/Attendance/attendance`,
         { params: { course, date } }
       );
       console.log("Students:", response.data);
@@ -43,7 +43,7 @@ export default function Mark({ navigation, route }) {
     const getStudent = async () => {
       try {
         const response = await axios.post(
-          `http://${GLOBAL_CONFIG.SYSTEM_IP}/api/Attendance/students`,
+          `https//${GLOBAL_CONFIG.SYSTEM_IP}/api/Attendance/students`,
           { course }
         );
         setStudents(response.data);
@@ -70,7 +70,7 @@ export default function Mark({ navigation, route }) {
     try {
       console.log("posting", attendanceList);
       await axios.post(
-        `http://${GLOBAL_CONFIG.SYSTEM_IP}/api/Attendance/attendance`,
+        `https//${GLOBAL_CONFIG.SYSTEM_IP}/api/Attendance/attendance`,
         {
           date: formattedDate,
           course,
