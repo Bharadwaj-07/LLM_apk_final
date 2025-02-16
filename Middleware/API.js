@@ -11,7 +11,7 @@ const API = axios.create({
   headers: {
     'Content-Type': 'application/json',
   },
-  baseURL: `https//${GLOBAL_CONFIG.SYSTEM_IP}/api/Users`, // Backend URL
+  baseURL: `https://${GLOBAL_CONFIG.SYSTEM_IP}/api/Users`, // Backend URL
   withCredentials: true,
 });
 
