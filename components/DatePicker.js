@@ -13,7 +13,7 @@ export default function DTimePicker({ date, setDate, set,state,ValidateAge,seter
 
   const onChange = (event, value) => {
     // seterror(ValidateAge(value));
-    setDate(value);
+    setDate(value); //sd
     state(true);
     // console.log(value);
     if (Platform.OS === 'android') {
