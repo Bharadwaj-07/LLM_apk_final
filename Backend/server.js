@@ -4,19 +4,19 @@ const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 
-const ProfileRoutes = require('./routes/ProfileRouter');
-const AttendanceRoutes = require('./routes/AttendanceRouter');
+const ProfileRoutes = require('./Routes/ProfileRouter');
+const AttendanceRoutes = require('./Routes/AttendanceRouter');
 const cookieParser = require('cookie-parser');
 
-const coursesAvailableRouter = require('./routes/CoursesAvailableRouter');
-const CreateClassRouter = require('./routes/CreateClassRouter');
-const JoinClassRouter = require('./routes/JoinClassRoute');
-const marksRouter = require('./routes/MarksRouter');
-const QuizRouter = require('./routes/QuizRouter');
+const coursesAvailableRouter = require('./Routes/CoursesAvailableRouter');
+const CreateClassRouter = require('./Routes/CreateClassRouter');
+const JoinClassRouter = require('./Routes/JoinClassRoute');
+const marksRouter = require('./Routes/MarksRouter');
+const QuizRouter = require('./Routes/QuizRouter');
 const App = express();
-const noticeRoutes = require('./routes/noticeRoutes');
-const DetailsRoutes = require('./routes/DetailsRouter');
-const maxMarksRoutes = require('./routes/MaxMarksRouter');
+const noticeRoutes = require('./Routes/noticeRoutes');
+const DetailsRoutes = require('./Routes/DetailsRouter');
+const maxMarksRoutes = require('./Routes/MaxMarksRouter');
 
 // Middleware
 
