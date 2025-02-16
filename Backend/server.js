@@ -22,16 +22,17 @@ const App = express();
 App.use(express.json());
 App.use(cookieParser());
 const corsOptions = {
-  origin: ["http://localhost:8081", "http://ise-project-t7w6.onrender.com"],
+  origin: ["http://localhost:8081", "https://ise-project-t7w6.onrender.com"],
   methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
   allowedHeaders: ["Content-Type", "Authorization"],
-  credentials: true
+  credentials: true,
+  preflightContinue: false, 
+  optionsSuccessStatus: 204 
 };
 
 App.use(cors(corsOptions));
+App.options("*", cors(corsOptions)); // Handle preflight requests
 
-// ✅ Handle Preflight (OPTIONS) Requests Manually
-App.options("*", cors(corsOptions));
 
 // ✅ MongoDB Connection
 const mongoURL ="mongodb+srv://eswarsaipashavula:pass@cluster0.uybc8.mongodb.net/db?retryWrites=true&w=majority&appName=Cluster0";
