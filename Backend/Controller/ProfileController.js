@@ -4,7 +4,7 @@ const Persons = require("../models/Profile");
 const LoginDetails = require("../models/LoginDetails");
 const RefreshToken = require("../models/RefreshToken");
 mongoose = require("mongoose");
-require('dotenv').config();
+
 
 exports.availability = async (req, res) => {
 

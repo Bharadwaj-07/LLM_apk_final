@@ -5,7 +5,7 @@ const Admins = require("../models/Admins");
 const Courses = require("../models/Course");
 const Profile = require("../models/Profile");
 mongoose = require("mongoose");
-require('dotenv').config();
+
 
 // Function to get dates for a specific course
 exports.getDates = async (req, res) => {

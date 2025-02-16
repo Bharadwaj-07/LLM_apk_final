@@ -1,4 +1,4 @@
-require('dotenv').config();
+
 
 const express = require('express');
 const mongoose = require('mongoose');
@@ -63,6 +63,7 @@ App.use('/api/Attendance', AttendanceRoutes);
 App.use("/maxmarks", maxMarksRoutes);
 App.use('/api/notices', noticeRoutes);
 App.use('/details', DetailsRoutes);
+mongo_URL="mongodb+srv://eswarsaipashavula:pass@cluster0.uybc8.mongodb.net/db?retryWrites=true&w=majority&appName=Cluster0"
 
 const PORT = process.env.PORT || 5000;
 App.listen(PORT, () => {

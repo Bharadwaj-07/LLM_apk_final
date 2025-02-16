@@ -4,7 +4,7 @@ const Profile=require("../models/Profile");
 const Admin=require("../models/Admins");
 const Course=require("../models/Course")
 mongoose = require("mongoose");
-require('dotenv').config();
+
 
 exports.getStudentDetails = async (req, res) => {
     try {
