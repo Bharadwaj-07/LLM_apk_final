@@ -31,13 +31,7 @@ App.use(cors({
 }));
 
 // Manually handle preflight requests
-App.options("*", (req, res) => {
-  res.header("Access-Control-Allow-Origin", "https//localhost:8081");
-  res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
-  res.header("Access-Control-Allow-Headers", "Content-Type, Authorization");
-  res.header("Access-Control-Allow-Credentials", "true");
-  res.sendStatus(200);
-});
+
 
 
 // Handle preflight requests
