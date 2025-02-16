@@ -3,7 +3,7 @@ const express = require("express");
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const cookieParser = require("cookie-parser");
-require("dotenv").config(); // 🔹 Load .env variables
+// 🔹 Load .env variables
 
 const ProfileRoutes = require("./Routes/ProfileRouter");
 const AttendanceRoutes = require("./Routes/AttendanceRouter");
