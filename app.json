@@ -19,10 +19,17 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.bharadwaj07.LMS"
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "extra": {
+      "eas": {
+        "projectId": "b2ca820c-c97b-46cc-a8c7-0c6550c87ea1"
+      }
+    },
+    "owner": "bharadwaj-07"
   }
 }
