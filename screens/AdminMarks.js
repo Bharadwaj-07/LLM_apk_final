@@ -86,11 +86,21 @@ const AdminMarks = ({ navigation, route }) => {
         if (!selectedTest) {
             return Alert.alert("Error", "Please select a test.");
         }
-        const validMarks = students.some(student => student[selectedTest] <= maxMarks[selectedTest] && student[selectedTest] >= 0);
+        // 
+        const validMarks = students.some(student => {
+            const studentMarks = parseInt(student[selectedTest], 10);
+            const maxTestMarks = parseInt(maxMarks[selectedTest], 10);
+        
+            return !isNaN(studentMarks) && !isNaN(maxTestMarks) && studentMarks <= maxTestMarks && studentMarks >= 0;
+        });
+        
         if (!validMarks) {
-            return Alert.alert("Alert", `Some students have invalid entries for ${selectedTest}. Please verify : \n1. If Maximum marks are entered.\n2. If marks for all the students have been entered.\n3.Students' marks are not greater than Maximum marks`);
-
+            return Alert.alert(
+                "Alert",
+                `Some students have invalid entries for ${selectedTest}. Please verify :\n1. If Maximum marks are entered.\n2. If marks for all the students have been entered.\n3. Students' marks are not greater than Maximum marks`
+            );
         }
+        
         // Check if any student has an empty marks field for the selected test
         const hasEmptyMarks = students.some(student =>
             !student[selectedTest] || student[selectedTest].trim() === ""
