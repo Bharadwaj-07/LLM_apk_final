@@ -16,7 +16,7 @@ const StudentMarks = ({ navigation, route }) => {
     const [maxMarks, setMaxMarks] = useState({ test1: "-", test2: "-", endSem: "-" });
     const getMaxMarks = async () => {
         try {
-            const response = await axios.post(`http://${GLOBAL_CONFIG.SYSTEM_IP}/maxmarks/getmaxmarks`, {
+            const response = await axios.post(`https//${GLOBAL_CONFIG.SYSTEM_IP}/maxmarks/getmaxmarks`, {
                 classId: course,
             });
             console.log(response);
@@ -35,7 +35,7 @@ const StudentMarks = ({ navigation, route }) => {
             let user = await AsyncStorage.getItem("uname");
             user = user.toLowerCase();
             const response = await axios.post(
-                `http://${GLOBAL_CONFIG.SYSTEM_IP}/marks/getmarks/student`,
+                `https//${GLOBAL_CONFIG.SYSTEM_IP}/marks/getmarks/student`,
                 { course: course, user: user }
             );
 
@@ -61,7 +61,7 @@ const StudentMarks = ({ navigation, route }) => {
     const calculateStats = async () => {
         try {
             const response = await axios.post(
-                `http://${GLOBAL_CONFIG.SYSTEM_IP}/marks/getmarks`,
+                `https//${GLOBAL_CONFIG.SYSTEM_IP}/marks/getmarks`,
                 { course: course }
             );
             console.log("Stats API Response:", response.data);

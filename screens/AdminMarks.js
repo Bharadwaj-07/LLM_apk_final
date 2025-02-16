@@ -17,7 +17,7 @@ const AdminMarks = ({ navigation, route }) => {
     const [maxMarksLocal, setMaxMarksLocal] = useState({ test1: "-", test2: "-", endSem: "-" });
     const getMaxMarks = async () => {
         try {
-            const response = await axios.post(`http://${GLOBAL_CONFIG.SYSTEM_IP}/maxmarks/getmaxmarks`, { classId: course });
+            const response = await axios.post(`https//${GLOBAL_CONFIG.SYSTEM_IP}/maxmarks/getmaxmarks`, { classId: course });
             if (response.data.data) {
                 setMaxMarks(response.data.data);
                 setMaxMarksLocal(response.data.data);
@@ -32,7 +32,7 @@ const AdminMarks = ({ navigation, route }) => {
     const updateMaxMarks = async () => {
         if (!selectedTest) return Alert.alert("Error", "Please select a test.");
         try {
-            await axios.post(`http://${GLOBAL_CONFIG.SYSTEM_IP}/maxmarks/setmaxmarks`, {
+            await axios.post(`https//${GLOBAL_CONFIG.SYSTEM_IP}/maxmarks/setmaxmarks`, {
                 classId: course,
                 test1: maxMarksLocal["test1"],
                 test2: maxMarksLocal["test2"],
@@ -48,7 +48,7 @@ const AdminMarks = ({ navigation, route }) => {
 
     const getStudents = async () => {
         try {
-            const response = await axios.post(`http://${GLOBAL_CONFIG.SYSTEM_IP}/marks/getmarks`, { course: course });
+            const response = await axios.post(`https//${GLOBAL_CONFIG.SYSTEM_IP}/marks/getmarks`, { course: course });
             setStudents(response.data.data);
             setMessage(response.data.empty);
             calculateStats(response.data.data);
@@ -101,7 +101,7 @@ const AdminMarks = ({ navigation, route }) => {
         }
 
         try {
-            await axios.post(`http://${GLOBAL_CONFIG.SYSTEM_IP}/marks/setmarks`, { students });
+            await axios.post(`https//${GLOBAL_CONFIG.SYSTEM_IP}/marks/setmarks`, { students });
             Alert.alert("Marks updated");
         } catch (e) {
             console.log(e);

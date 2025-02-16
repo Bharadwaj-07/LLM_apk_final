@@ -24,7 +24,7 @@ App.use(cookieParser());
 const cors = require("cors");
 
 App.use(cors({
-  origin: "http://localhost:8081",  // Allow frontend origin
+  origin: "https//localhost:8081",  // Allow frontend origin
   methods: "GET, POST, PUT, DELETE, OPTIONS",
   allowedHeaders: "Content-Type, Authorization",
   credentials: true
@@ -32,7 +32,7 @@ App.use(cors({
 
 // Manually handle preflight requests
 App.options("*", (req, res) => {
-  res.header("Access-Control-Allow-Origin", "http://localhost:8081");
+  res.header("Access-Control-Allow-Origin", "https//localhost:8081");
   res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
   res.header("Access-Control-Allow-Headers", "Content-Type, Authorization");
   res.header("Access-Control-Allow-Credentials", "true");
@@ -74,5 +74,5 @@ App.use("/details", DetailsRoutes);
 // ✅ Server Port
 const PORT = process.env.PORT || 5000;
 App.listen(PORT, () => {
-  console.log(`🚀 Server running on http://localhost:${PORT}`);
+  console.log(`🚀 Server running on https//localhost:${PORT}`);
 });
