@@ -15,7 +15,7 @@ export default function QuizStats({ navigation, route }) {
 
     const fetchQuizStats = async () => {
         try {
-            const url = `http://${GLOBAL_CONFIG.SYSTEM_IP}:${GLOBAL_CONFIG.PORT}/quiz/${courseId}/${quizNumber}`;
+            const url = `http://${GLOBAL_CONFIG.SYSTEM_IP}/quiz/${courseId}/${quizNumber}`;
             console.log("Fetching Quiz from:", url);
             const response = await axios.get(url);
             let data = response.data.data;

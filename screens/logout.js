@@ -6,7 +6,7 @@ const Logout = ({ navigation }) => {
   useEffect(() => {
     const performLogout = async () => {
       try {
-        // await axios.post(`http://${GLOBAL_CONFIG.SYSTEM_IP}:${GLOBAL_CONFIG.PORT}/api/Users/logout`);
+        // await axios.post(`http://${GLOBAL_CONFIG.SYSTEM_IP}/api/Users/logout`);
         await AsyncStorage.clear(); // Clears all stored data
         navigation.replace("Login"); // Redirect to login screen
       } catch (error) {
