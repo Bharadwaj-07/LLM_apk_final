@@ -15,7 +15,7 @@
     "mongoose": "^8.10.0"
   },
   "app": {
-    "name": "Student Connect",
-    "icon": "icon.png"
+    "name": "Class Connect",
+    "icon": "../assets/icon.png"
   }
 }
