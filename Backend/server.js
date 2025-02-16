@@ -21,17 +21,8 @@ const App = express();
 // ✅ Middleware
 App.use(express.json());
 App.use(cookieParser());
-const corsOptions = {
-  origin: ["http://localhost:8081", "https://ise-project-t7w6.onrender.com"],
-  methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
-  allowedHeaders: ["Content-Type", "Authorization"],
-  credentials: true,
-  preflightContinue: false, 
-  optionsSuccessStatus: 204 
-};
-
-App.use(cors(corsOptions));
-App.options("*", cors(corsOptions)); // Handle preflight requests
+App.use(cors({ origin: "*", credentials: true }));
+// Handle preflight requests
 
 
 // ✅ MongoDB Connection
