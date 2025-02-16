@@ -30,7 +30,7 @@ const CreateClass = () => {
 
     try {
       console.log("Entering to create class", userId);
-      const response = await axios.post(`http://${GLOBAL_CONFIG.SYSTEM_IP}:5000/createClass`, payload);
+      const response = await axios.post(`http://${GLOBAL_CONFIG.SYSTEM_IP}:${GLOBAL_CONFIG.PORT}/createClass`, payload);
       if (response.status === 201) {
         Alert.alert('Success', 'Classroom created successfully!');
         setClassName('');

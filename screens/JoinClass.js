@@ -24,7 +24,7 @@ const JoinClass = () => {
         setLoading(true);
         let course=classId;
         let user=userId;
-        const response = await axios.post(`http://${GLOBAL_CONFIG.SYSTEM_IP}:5000/api/Attendance/Admin`, {
+        const response = await axios.post(`http://${GLOBAL_CONFIG.SYSTEM_IP}:${GLOBAL_CONFIG.PORT}/api/Attendance/Admin`, {
             course,
             user,
         });
@@ -32,7 +32,7 @@ const JoinClass = () => {
         if(!response.data.admin){
         try {
             console.log("not admin and Trying to join a class");
-            const response = await axios.post(`http://${GLOBAL_CONFIG.SYSTEM_IP}:5000/joinClass/join`, {
+            const response = await axios.post(`http://${GLOBAL_CONFIG.SYSTEM_IP}:${GLOBAL_CONFIG.PORT}/joinClass/join`, {
                 classId, username, userId
             });
             console.log(response.data);

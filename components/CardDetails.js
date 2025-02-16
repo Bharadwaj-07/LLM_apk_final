@@ -27,7 +27,7 @@ const CardDetails = ({ subject, course, instructor, id, fetchClasses, navigation
         const user = userId.toLowerCase();
         console.log("User", user);
         try {
-            const response = await axios.post(`http://${GLOBAL_CONFIG.SYSTEM_IP}:5000/api/Attendance/Admin`, {
+            const response = await axios.post(`http://${GLOBAL_CONFIG.SYSTEM_IP}:${GLOBAL_CONFIG.PORT}/api/Attendance/Admin`, {
                 course,
                 user,
             });
@@ -56,7 +56,7 @@ const CardDetails = ({ subject, course, instructor, id, fetchClasses, navigation
 
             let userId = await AsyncStorage.getItem('uname');
             console.log(classId, userId);
-            const response = await axios.delete(`http://${GLOBAL_CONFIG.SYSTEM_IP}:5000/createClass/${classId}/${userId}/${admin}/${instructor}`);
+            const response = await axios.delete(`http://${GLOBAL_CONFIG.SYSTEM_IP}:${GLOBAL_CONFIG.PORT}/createClass/${classId}/${userId}/${admin}/${instructor}`);
 
             console.log(response.data.message);
             Alert.alert('Success', 'Classroom deleted successfully!');

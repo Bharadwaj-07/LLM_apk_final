@@ -69,7 +69,7 @@ export default function QuizCreator({ navigation, route }) {
 
       const payload = { courseId, quizNumber, questions: updatedQuestions };
 
-      const response = await axios.post(`http://${GLOBAL_CONFIG.SYSTEM_IP}:5000/quiz`, payload);
+      const response = await axios.post(`http://${GLOBAL_CONFIG.SYSTEM_IP}:${GLOBAL_CONFIG.PORT}/quiz`, payload);
 
       if (response.status === 201 || response.status === 200) {
         Alert.alert("Success", `Quiz ${quizNumber} saved successfully`);

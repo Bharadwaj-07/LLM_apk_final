@@ -31,7 +31,7 @@ export default function MainWindow({ navigation, route }) {
         try {
             const user = userId.toLowerCase();
             console.log(userId, course);
-            const response = await axios.post(`http://${GLOBAL_CONFIG.SYSTEM_IP}:5000/api/Attendance/Admin`, {
+            const response = await axios.post(`http://${GLOBAL_CONFIG.SYSTEM_IP}:${GLOBAL_CONFIG.PORT}/api/Attendance/Admin`, {
                 course,
                 user,
             });
@@ -51,7 +51,7 @@ export default function MainWindow({ navigation, route }) {
         try {
             const user = userId.toLowerCase();
             console.log(userId, course);
-            const response = await axios.post(`http://${GLOBAL_CONFIG.SYSTEM_IP}:5000/api/Attendance/Admin`, {
+            const response = await axios.post(`http://${GLOBAL_CONFIG.SYSTEM_IP}:${GLOBAL_CONFIG.PORT}/api/Attendance/Admin`, {
                 course,
                 user,
             });
@@ -73,7 +73,7 @@ export default function MainWindow({ navigation, route }) {
         try {
             const user = userId.toLowerCase();
             console.log(userId, course);
-            const response = await axios.post(`http://${GLOBAL_CONFIG.SYSTEM_IP}:5000/api/Attendance/Admin`, {
+            const response = await axios.post(`http://${GLOBAL_CONFIG.SYSTEM_IP}:${GLOBAL_CONFIG.PORT}/api/Attendance/Admin`, {
                 course,
                 user,
             });
@@ -98,7 +98,7 @@ export default function MainWindow({ navigation, route }) {
         try {
             const user = userId.toLowerCase();
             console.log(userId, course);
-            const response = await axios.post(`http://${GLOBAL_CONFIG.SYSTEM_IP}:5000/api/Attendance/Admin`, {
+            const response = await axios.post(`http://${GLOBAL_CONFIG.SYSTEM_IP}:${GLOBAL_CONFIG.PORT}/api/Attendance/Admin`, {
                 course,
                 user,
             });

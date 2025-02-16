@@ -17,7 +17,7 @@ export default function SubjectToAvailability({ Name, setName, fieldName,placeho
             // Sending a POST request to check username availability
             setAvailable(false);
 
-            const response = await axios.post(`http://${GLOBAL_CONFIG.SYSTEM_IP}:5000/api/Users/check`, { Name, fieldName });
+            const response = await axios.post(`http://${GLOBAL_CONFIG.SYSTEM_IP}:${GLOBAL_CONFIG.PORT}/api/Users/check`, { Name, fieldName });
 
             // Log the full response for debugging (optional)
 

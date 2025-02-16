@@ -14,11 +14,11 @@ export default function Dates({ navigation, route }) {
     try {
       let user = await AsyncStorage.getItem('uname');
       user = user.toLowerCase();
-      const response = await axios.post(`http://${GLOBAL_CONFIG.SYSTEM_IP}:5000/api/Attendance/dates`, {
+      const response = await axios.post(`http://${GLOBAL_CONFIG.SYSTEM_IP}:${GLOBAL_CONFIG.PORT}/api/Attendance/dates`, {
         course: course
       });
       const attendanceData = response.data;
-      const attended = await axios.post(`http://${GLOBAL_CONFIG.SYSTEM_IP}:5000/api/Attendance/UserAttendance`,
+      const attended = await axios.post(`http://${GLOBAL_CONFIG.SYSTEM_IP}:${GLOBAL_CONFIG.PORT}/api/Attendance/UserAttendance`,
         { course: course, user: user }
       );
       const dateArray = attendanceData.map(entry => entry.date);

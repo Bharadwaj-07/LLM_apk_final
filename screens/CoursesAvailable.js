@@ -12,7 +12,7 @@ const CoursesAvailable = () => {
     const [error, setError] = useState(null);
 
     const fetchCourses = () => {
-        axios.get(`http://${GLOBAL_CONFIG.SYSTEM_IP}:5000/coursesAvailable`)
+        axios.get(`http://${GLOBAL_CONFIG.SYSTEM_IP}:${GLOBAL_CONFIG.PORT}/coursesAvailable`)
             .then((response) => {
                 setCourses(response.data);
                 setLoading(false);

@@ -43,7 +43,7 @@ export default function NoticeBoard({ navigation, route }) {
 
     const fetchNotices = async () => {
         try {
-            const response = await axios.get(`http://${GLOBAL_CONFIG.SYSTEM_IP}:5000/api/notices/${course}`);
+            const response = await axios.get(`http://${GLOBAL_CONFIG.SYSTEM_IP}:${GLOBAL_CONFIG.PORT}/api/notices/${course}`);
             setNotices(response.data);
         } catch (error) {
             console.error("Error fetching notices:", error);
@@ -57,7 +57,7 @@ export default function NoticeBoard({ navigation, route }) {
         }
 
         try {
-            await axios.post(`http://${GLOBAL_CONFIG.SYSTEM_IP}:5000/api/notices/add/${course}`, {
+            await axios.post(`http://${GLOBAL_CONFIG.SYSTEM_IP}:${GLOBAL_CONFIG.PORT}/api/notices/add/${course}`, {
                 message,
                 uname: userId,
                 isAdmin: admin

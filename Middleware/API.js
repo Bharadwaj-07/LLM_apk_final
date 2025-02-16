@@ -7,7 +7,7 @@ const API = axios.create({
   headers: {
     'Content-Type': 'application/json',
   },
-  baseURL: `http://${GLOBAL_CONFIG.SYSTEM_IP}:5000/api/Users`, // Backend URL
+  baseURL: `http://${GLOBAL_CONFIG.SYSTEM_IP}:${GLOBAL_CONFIG.PORT}/api/Users`, // Backend URL
   withCredentials: true,
 });
 
@@ -18,7 +18,7 @@ const refreshAccessToken = async (uname) => {
   console.log("refreshing token");
   try {
     const refreshToken = await AsyncStorage.getItem('refresh_token');
-    const response = await axios.post(`http://${GLOBAL_CONFIG.SYSTEM_IP}:5000/api/Users/refresh`, { uname: uname, refreshToken: refreshToken });
+    const response = await axios.post(`http://${GLOBAL_CONFIG.SYSTEM_IP}:${GLOBAL_CONFIG.PORT}/api/Users/refresh`, { uname: uname, refreshToken: refreshToken });
     const { accessToken } = response.data;
     await AsyncStorage.setItem('access_token', access_token);
     // Save the new access token to memory or sessionStorage

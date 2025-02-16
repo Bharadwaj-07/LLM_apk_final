@@ -20,7 +20,7 @@ export default function Password({ route, navigation }) {
         }
         try {
             // Send the POST request to the backend API
-            const response = await axios.post(`http://${GLOBAL_CONFIG.SYSTEM_IP}:5000/api/Users/store`, { ...UserDetails, password: password });
+            const response = await axios.post(`http://${GLOBAL_CONFIG.SYSTEM_IP}:${GLOBAL_CONFIG.PORT}/api/Users/store`, { ...UserDetails, password: password });
 
             // Handle success response
             setStatus('Data saved successfully!');

@@ -27,7 +27,7 @@ const Quiz = ({ route, navigation }) => {
 
     const fetchQuiz = async () => {
         try {
-            const url = `http://${GLOBAL_CONFIG.SYSTEM_IP}:5000/quiz/${courseId}/${quizNumber}/${studentId}`;
+            const url = `http://${GLOBAL_CONFIG.SYSTEM_IP}:${GLOBAL_CONFIG.PORT}/quiz/${courseId}/${quizNumber}/${studentId}`;
             console.log("Fetching Quiz from:", url);
 
             const response = await axios.get(url);
@@ -66,7 +66,7 @@ const Quiz = ({ route, navigation }) => {
 
             console.log(formattedAnswers);
 
-            const response = await axios.post(`http://${GLOBAL_CONFIG.SYSTEM_IP}:5000/quiz/submitQuiz`, {
+            const response = await axios.post(`http://${GLOBAL_CONFIG.SYSTEM_IP}:${GLOBAL_CONFIG.PORT}/quiz/submitQuiz`, {
                 studentId,
                 quizNumber,
                 courseId,

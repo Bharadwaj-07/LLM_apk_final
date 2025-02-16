@@ -13,7 +13,7 @@ export default function Dates({ navigation, route }) {
   const [dates, setDates] = useState([]);
   const getDates = async () => {
     try {
-      const response = await axios.post(`http://${GLOBAL_CONFIG.SYSTEM_IP}:5000/api/Attendance/dates`, {
+      const response = await axios.post(`http://${GLOBAL_CONFIG.SYSTEM_IP}:${GLOBAL_CONFIG.PORT}/api/Attendance/dates`, {
         course: course
       });
       console.log("Dates:", response.data); // Log actual courses data

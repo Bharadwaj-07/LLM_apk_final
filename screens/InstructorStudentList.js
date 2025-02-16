@@ -13,7 +13,7 @@ export default function InstructorStudentList({ route }) {
 
     const fetchAdminDetails = async () => {
         try {
-            const response = await axios.get(`http://${GLOBAL_CONFIG.SYSTEM_IP}:5000/details/${course}/admins`);
+            const response = await axios.get(`http://${GLOBAL_CONFIG.SYSTEM_IP}:${GLOBAL_CONFIG.PORT}/details/${course}/admins`);
             setAdmins(response.data.admins || []); // ✅ Corrected to set `admins`
         } catch (error) {
             console.error("Error fetching instructor list:", error); // ✅ Updated error message
@@ -24,7 +24,7 @@ export default function InstructorStudentList({ route }) {
 
     const fetchStudentDetails = async () => {
         try {
-            const response = await axios.get(`http://${GLOBAL_CONFIG.SYSTEM_IP}:5000/details/${courseId}/students`);
+            const response = await axios.get(`http://${GLOBAL_CONFIG.SYSTEM_IP}:${GLOBAL_CONFIG.PORT}/details/${courseId}/students`);
             setStudents(response.data.students || []);
         } catch (error) {
             console.error("Error fetching student list:", error);

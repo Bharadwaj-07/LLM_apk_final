@@ -22,7 +22,8 @@ export default function LoginPage({ navigation }) {
       try {
         console.log(UserName);
         // Send the POST request to the backend API
-        const response = await API.post(`http://${GLOBAL_CONFIG.SYSTEM_IP}:5000/api/Users/login`, { uname: UserName, passwd: password });
+        console.log(GLOBAL_CONFIG);
+        const response = await API.post(`http://${GLOBAL_CONFIG.SYSTEM_IP}:${GLOBAL_CONFIG.PORT}/api/Users/login`, { uname: UserName, passwd: password });
         console.log("response received", response.data);
         AsyncStorage.setItem('access_token', response.data.accessToken);
         AsyncStorage.setItem('refresh_token', response.data.refreshToken);

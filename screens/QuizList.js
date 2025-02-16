@@ -19,7 +19,7 @@ const QuizList = ({ route, navigation }) => {
   const fetchQuizzes = async () => {
     try {
       console.log("Getting Quizzes");
-      const response = await axios.get(`http://${GLOBAL_CONFIG.SYSTEM_IP}:5000/quiz?courseId=${courseId}`);
+      const response = await axios.get(`http://${GLOBAL_CONFIG.SYSTEM_IP}:${GLOBAL_CONFIG.PORT}/quiz?courseId=${courseId}`);
       setQuizzes(response.data);
       console.log(response.data);
     } catch (error) {
