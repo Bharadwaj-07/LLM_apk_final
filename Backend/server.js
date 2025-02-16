@@ -3,7 +3,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
-const cors = require('cors');
+
 const ProfileRoutes = require('./routes/ProfileRouter');
 const AttendanceRoutes = require('./routes/AttendanceRouter');
 const cookieParser = require('cookie-parser');
@@ -19,10 +19,7 @@ const DetailsRoutes = require('./routes/DetailsRouter');
 const maxMarksRoutes = require('./routes/MaxMarksRouter');
 
 // Middleware
-App.use(cors({
-  origin: 'http://localhost:8081',
-  credentials: true,
-}));
+
 
 App.use(express.json());
 App.use(cookieParser());
