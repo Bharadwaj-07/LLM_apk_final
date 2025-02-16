@@ -27,17 +27,27 @@ App.use(cors({
 App.use(express.json());
 App.use(cookieParser());
 
-mongoose
-  .connect("mongodb://127.0.0.1:27017/DB", {
-    useNewUrlParser: true,
-    useUnifiedTopology: true
-  })
-  .then(() => {
-    console.log('Connected to MongoDB successfully!');
-  })
-  .catch((error) => {
-    console.error('Error connecting to MongoDB:', error.message);
-  });
+
+mongoose.connect(process.env.mongo_URL).then(
+    () => {
+        console.log('connected to database');
+    }
+)
+    .catch((err) => {
+        console.log(`Could not connect to db ` + err);
+    })
+
+// mongoose
+//   .connect("mongodb://127.0.0.1:27017/DB", {
+//     useNewUrlParser: true,
+//     useUnifiedTopology: true
+//   })
+//   .then(() => {
+//     console.log('Connected to MongoDB successfully!');
+//   })
+//   .catch((error) => {
+//     console.error('Error connecting to MongoDB:', error.message);
+//   });
 
 const conn = mongoose.connection;
 conn.on("error", (err) => console.error.bind(console, "DB connection error"));

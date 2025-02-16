@@ -7,7 +7,7 @@ import Ionicons from '@expo/vector-icons/Ionicons';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import CoursesAvailable from './CoursesAvailable';
 import Dashboard from './CoursesEnrolled';
-import Profile from './Profile';
+// import Profile from './Profile';
 import JoinClass from './JoinClass';
 import CreateClass from './CreateClass';
 import LoginPage from './Login/login';

@@ -86,20 +86,20 @@ const AdminMarks = ({ navigation, route }) => {
         if (!selectedTest) {
             return Alert.alert("Error", "Please select a test.");
         }
-        const validMarks=students.some(student=>student[selectedTest]<=maxMarks[selectedTest]&&student[selectedTest]>=0);
-        if(!validMarks){
+        const validMarks = students.some(student => student[selectedTest] <= maxMarks[selectedTest] && student[selectedTest] >= 0);
+        if (!validMarks) {
             return Alert.alert("Alert", `Some students have invalid entries for ${selectedTest}. Please verify : \n1. If Maximum marks are entered.\n2. If marks for all the students have been entered.\n3.Students' marks are not greater than Maximum marks`);
- 
+
         }
         // Check if any student has an empty marks field for the selected test
-        const hasEmptyMarks = students.some(student => 
+        const hasEmptyMarks = students.some(student =>
             !student[selectedTest] || student[selectedTest].trim() === ""
         );
-    
+
         if (hasEmptyMarks) {
             return Alert.alert("Error", `Some students have empty marks for ${selectedTest}. Please fill in all marks.`);
         }
-    
+
         try {
             await axios.post(`http://${GLOBAL_CONFIG.SYSTEM_IP}:5000/marks/setmarks`, { students });
             Alert.alert("Marks updated");
@@ -108,12 +108,14 @@ const AdminMarks = ({ navigation, route }) => {
             Alert.alert("Error", "Failed to update marks. Try again.");
         }
     };
-    
-    
+
+
 
     const renderStudent = ({ item }) => (
         <View style={styles.studentCard}>
-            <Text style={styles.studentName}>{item.name}</Text>
+            <Text style={styles.studentName}>
+                {item?.name} ( {item?.userId} )
+            </Text>
             <TextInput style={styles.input} keyboardType="numeric" placeholder="Marks"
                 value={item[selectedTest] === "-" ? "" : item[selectedTest]}
                 onChangeText={(value) => handleMarksChange(item._id, value)} />
@@ -186,7 +188,7 @@ const AdminMarks = ({ navigation, route }) => {
                             {message && <Text style={styles.noStudentsText}>No students joined.</Text>}
 
                             {/* Submit Button */}
-                            <TouchableOpacity style={styles.submitButton} onPress={()=>handleSubmit(selectedTest)}>
+                            <TouchableOpacity style={styles.submitButton} onPress={() => handleSubmit(selectedTest)}>
                                 <Text style={styles.submitButtonText}>Submit Marks</Text>
                             </TouchableOpacity>
                         </View>
