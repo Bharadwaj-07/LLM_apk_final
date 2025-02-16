@@ -1,14 +1,14 @@
 const express = require('express');
-const Class = require('../models/CreateClassModel');
-const Course = require('../models/CoursesAvailableModel');
-const Admin = require('../models/Admins');
-const JoinClass = require('../models/JoinClassModel');
-const marks=require('../models/MarksModel');
+const Class = require('../Models/CreateClassModel');
+const Course = require('../Models/CoursesAvailableModel');
+const Admin = require('../Models/Admins');
+const JoinClass = require('../Models/JoinClassModel');
+const marks=require('../Models/MarksModel');
 const router = express.Router();
-const CourseModel = require('../models/Course');
+const CourseModel = require('../Models/Course');
 const crypto = require('crypto');
-const Attendance=require('../models/Attendance')
-const MaxMarks=require("../models/MaxMarks")
+const Attendance=require('../Models/Attendance')
+const MaxMarks=require("../Models/MaxMarks")
 router.post('/', async (req, res) => {
     let { className, subjectName, instructorName, userId } = req.body;
     console.log(req.body);

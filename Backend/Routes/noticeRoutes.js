@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const Notice = require('../models/Notice');
+const Notice = require('../Models/Notice');
 
 // Fetch all notices
 router.get('/:course', async (req, res) => {

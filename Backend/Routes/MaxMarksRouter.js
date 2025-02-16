@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const MaxMarks = require("../models/MaxMarks");
+const MaxMarks = require("../Models/MaxMarks");
 
 // Set maximum marks for a course
 router.post("/setmaxmarks", async (req, res) => {

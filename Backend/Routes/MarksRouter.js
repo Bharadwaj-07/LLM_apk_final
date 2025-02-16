@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const Marks = require('../models/MarksModel');
+const Marks = require('../Models/MarksModel');
 
 router.post('/setmarks', async (req, res) => {
     const marksList = req.body.students; // Assuming this is an array of marks objects

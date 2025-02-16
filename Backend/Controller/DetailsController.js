@@ -1,8 +1,8 @@
 const res = require("express/lib/response")
 const jwt = require("jsonwebtoken");
-const Profile=require("../models/Profile");
-const Admin=require("../models/Admins");
-const Course=require("../models/Course")
+const Profile=require("../Models/Profile");
+const Admin=require("../Models/Admins");
+const Course=require("../Models/Course")
 mongoose = require("mongoose");
 
 

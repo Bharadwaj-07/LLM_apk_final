@@ -1,5 +1,5 @@
-const Quiz = require("../models/Quiz");
-const StudentResponse = require("../models/StudentResponse");
+const Quiz = require("../Models/Quiz");
+const StudentResponse = require("../Models/StudentResponse");
 
 // 📌 GET all quizzes for a specific course
 exports.getQuizzes = async (req, res) => {

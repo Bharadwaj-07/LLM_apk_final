@@ -1,9 +1,9 @@
 const express = require('express');
 const router = express.Router();
-const JoinClass = require('../models/JoinClassModel');
-const Profile = require('../models/Profile');
-const CourseModel = require('../models/Course');
-const MarksModel = require('../models/MarksModel')
+const JoinClass = require('../Models/JoinClassModel');
+const Profile = require('../Models/Profile');
+const CourseModel = require('../Models/Course');
+const MarksModel = require('../Models/MarksModel')
 router.post('/join', async (req, res) => {
     let { userId, classId, username } = req.body;
     console.log("join post router");
