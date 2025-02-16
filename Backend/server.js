@@ -21,18 +21,24 @@ const App = express();
 // ✅ Middleware
 App.use(express.json());
 App.use(cookieParser());
-App.use((req, res, next) => {
-  res.header("Access-Control-Allow-Origin", "http://localhost:8081"); // Allow only your frontend
+const cors = require("cors");
+
+App.use(cors({
+  origin: "http://localhost:8081",  // Allow frontend origin
+  methods: "GET, POST, PUT, DELETE, OPTIONS",
+  allowedHeaders: "Content-Type, Authorization",
+  credentials: true
+}));
+
+// Manually handle preflight requests
+App.options("*", (req, res) => {
+  res.header("Access-Control-Allow-Origin", "http://localhost:8081");
   res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
   res.header("Access-Control-Allow-Headers", "Content-Type, Authorization");
   res.header("Access-Control-Allow-Credentials", "true");
-
-  if (req.method === "OPTIONS") {
-    return res.sendStatus(200);
-  }
-  
-  next();
+  res.sendStatus(200);
 });
+
 
 // Handle preflight requests
 
