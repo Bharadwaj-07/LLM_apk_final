@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { StyleSheet, Text, View, Image, ImageBackground, TextInput, TouchableOpacity, Alert, Form } from 'react-native';
+import { StyleSheet, Text, View, Image, ImageBackground, TextInput, TouchableOpacity, Alert, ActivityIndicator } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import API from '../../Middleware/API';
 import { GLOBAL_CONFIG } from '../../components/global_config';
@@ -13,6 +13,8 @@ export default function LoginPage({ navigation }) {
   const [failure, setFailure] = useState(false);
   const [visible, setVisible] = useState(false);
   const [status, setStatus] = useState("");
+  const [loading, setLoading] = useState(false);
+
   const ForgotPassword = () => {
     Alert.alert("Please contact the concerned TA");
   };
@@ -20,8 +22,8 @@ export default function LoginPage({ navigation }) {
   HandleLogin = async (UserName, password) => {
     if (password != "" && UserName != "") {
       try {
+        setLoading(true);
         console.log(UserName);
-        // Send the POST request to the backend API
         console.log(GLOBAL_CONFIG);
         const response = await API.post(`https://${GLOBAL_CONFIG.SYSTEM_IP}/api/Users/login`, { uname: UserName, passwd: password });
         console.log("response received", response.data);
@@ -37,8 +39,8 @@ export default function LoginPage({ navigation }) {
           AsyncStorage.setItem('uname', UserName);
           navigation.navigate("Home", UserName);
           navigation.reset({
-            index: 0,  // Index of the screen you want to navigate to (0 means it's the first screen)
-            routes: [{ name: 'Home', params: { UserName: UserName } }], // Set the Home screen as the new root
+            index: 0,
+            routes: [{ name: 'Home', params: { UserName: UserName } }],
           });
         }
         if (!response.data.verified) {
@@ -46,32 +48,26 @@ export default function LoginPage({ navigation }) {
           setFailure(true);
         }
       } catch (error) {
-        // Handle error
         setStatus('Error saving data');
         console.error('Error:', error);
+      } finally {
+        setLoading(false);
       }
     }
-
   }
   return (
-
     <ImageBackground source={require("../../assets/IIT_Admin_Block.png")}
       style={styles.container}>
-
       <View style={styles.rectangle}>
         <Image source={require("../../assets/hat_icon.png")}
           style={styles.medium_icon}
         />
-
-        {/* Roll Number Input */}
         <TextInput
           style={styles.input}
           placeholder="User Name"
           value={UserName}
           onChangeText={setUname}
         />
-
-        {/* Password Input */}
         <View style={{ width: "100%", alignItems: "center" }}>
           <TextInput
             style={styles.input}
@@ -83,17 +79,16 @@ export default function LoginPage({ navigation }) {
           <TouchableOpacity style={{ alignItems: "center", position: "relative", alignItems: "left", marginBottom: 10 }} onPress={() => { setVisible(!visible) }}><Text>{visible ? 'Hide' : 'Show'}</Text></TouchableOpacity>
         </View>
         {(failure) && <Text style={styles.title}>Wrong Username or Password!!</Text>}
-        {/*Forgot Password */}
         <TouchableOpacity style={styles.small_button} onPress={ForgotPassword}><Text style={styles.small_text}>Forgot Password?</Text></TouchableOpacity>
-        {/* Login Button */}
-        <TouchableOpacity style={styles.button} onPress={() => HandleLogin(UserName, password)} >
-          <Text style={styles.buttonText}>Login</Text>
-        </TouchableOpacity>
-        {/* New User */}
+        {loading ? (
+          <ActivityIndicator size="large" color="#007bff" />
+        ) : (
+          <TouchableOpacity style={styles.button} onPress={() => HandleLogin(UserName, password)} >
+            <Text style={styles.buttonText}>Login</Text>
+          </TouchableOpacity>
+        )}
         <TouchableOpacity style={styles.small_button} onPress={() => navigation.navigate("Signup")}><Text style={styles.small_text}>New User? Sign Up</Text></TouchableOpacity>
-
       </View>
-
     </ImageBackground>
   );
 }
@@ -111,7 +106,6 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: '#f3f2',
-
   },
   medium_icon: {
     opacity: 1,
@@ -122,7 +116,7 @@ const styles = StyleSheet.create({
     padding: 10,
   },
   rectangle: {
-    width: '80%', // Adjust as needed
+    width: '80%',
     padding: 20,
     justifyContent: 'center',
     alignItems: 'center',
@@ -153,7 +147,6 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     alignItems: 'center',
     width: '60%'
-
   },
   buttonText: {
     color: 'rgba(255,255,255,1)',

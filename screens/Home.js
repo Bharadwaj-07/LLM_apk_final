@@ -16,13 +16,7 @@ import Logout from './logout';
 export default function App() {
   const Tab = createBottomTabNavigator();
   const Drawer = createDrawerNavigator();
-  const handleLogin=()=>{
-    navigation.navigate("Login");
-    navigation.reset({
-      index: 0,  // Index of the screen you want to navigate to (0 means it's the first screen)
-      routes: [{ name: 'Home', params: { UserName: UserName } }], // Set the Home screen as the new root
-    });
-  }
+
   const TabNavigator = () => {
     return (
       <Tab.Navigator
@@ -118,7 +112,8 @@ export default function App() {
 
   return (
     <>
-      <StatusBar style="light" />
+      
+      
       {/* <NavigationContainer> */}
         <DrawerNavigator />
       {/* </NavigationContainer>*/}

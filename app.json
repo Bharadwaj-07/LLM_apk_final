@@ -1,10 +1,10 @@
 {
   "expo": {
-    "name": "LMS",
+    "name": "EduSync",
     "slug": "LMS",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
+    "icon": "./assets/hat_icon.png",
     "userInterfaceStyle": "light",
     "newArchEnabled": true,
     "splash": {
@@ -17,7 +17,7 @@
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/adaptive-icon.png",
+        "foregroundImage": "./assets/hat_icon.png",
         "backgroundColor": "#ffffff"
       },
       "package": "com.bharadwaj07.LMS"

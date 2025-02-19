@@ -5,7 +5,7 @@ import axios from 'axios';
 import { GLOBAL_CONFIG } from '../components/global_config';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 // import data from '../env'
-
+import SlideMenu from '../components/SlideMenu';
 const CreateClass = () => {
   const [className, setClassName] = useState('');
   const [subjectName, setSubjectName] = useState('');
@@ -91,6 +91,7 @@ const CreateClass = () => {
       <TouchableOpacity style={styles.button} onPress={handleSubmit}>
         <Text style={styles.buttonText}>Create</Text>
       </TouchableOpacity>
+      <SlideMenu/>
     </View>
   );
 };

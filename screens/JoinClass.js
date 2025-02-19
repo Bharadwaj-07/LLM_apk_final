@@ -5,6 +5,7 @@ import axios from 'axios';
 import { FontAwesome } from '@expo/vector-icons';
 import { GLOBAL_CONFIG } from '../components/global_config';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import SlideMenu from '../components/SlideMenu';
 const JoinClass = () => {
     const [classId, setClassId] = useState('');
     const [username, setUsername] = useState('');
@@ -93,7 +94,9 @@ const JoinClass = () => {
            <TouchableOpacity style={styles.button} onPress={join}>
                    <Text style={styles.buttonText}>Join</Text>
                  </TouchableOpacity>
+                 <SlideMenu/>
         </View>
+        
 
     );
 };
