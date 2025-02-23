@@ -74,8 +74,8 @@ const App = () => {
           <Stack.Screen name="Participants" component={InstructorStudentList} />
           <Stack.Screen name="CreateClass" component={CreateClass} options={{ title: "Create Class" }} />
           <Stack.Screen name="JoinClass" component={JoinClass} options={{ title: "Join Class" }} />
-          <Stack.Screen name="CoursesAvailable" component={CoursesAvailable} options={{ title: "Courses Available" }} />
-          <Stack.Screen name="Home" component={CoursesEnrolled} options={{ title: "Courses Enrolled" }} />
+          <Stack.Screen name="CoursesAvailable" component={CoursesAvailable} options={{ title: "Dashboard" }} />
+          <Stack.Screen name="Home" component={CoursesEnrolled} options={{ title: "Dashboard" }} />
           <Stack.Screen name="Logout" component={Logout} options={{ title: "Logout" }} />
         </Stack.Navigator>
       </NavigationContainer>
