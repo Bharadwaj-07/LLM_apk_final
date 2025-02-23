@@ -49,7 +49,7 @@ const CoursesEnrolled = () => {
 
     return (
         <SafeAreaView style={styles.container}>
-            <ScrollView contentContainerStyle={styles.scrollViewContent}>
+             <ScrollView contentContainerStyle={[styles.scrollViewContent, { paddingBottom: 60 }]}>
                 {classes.length > 0 ? (
                     classes.map((classItem) => (
                         <CardDetails
@@ -190,5 +190,5 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
         marginTop: 3, // Space between icon and text
     },
-    
+    scrollViewContent: { flexGrow: 1, paddingBottom: 60 }, // Ensure bottom spacing
 });

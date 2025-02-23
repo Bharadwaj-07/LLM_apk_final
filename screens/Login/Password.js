@@ -46,46 +46,83 @@ export default function Password({ route, navigation }) {
         }
 
     }
+    const validatePassword = (password) => {
+        const minLength = password.length >= 6;
+        const uppercase = /[A-Z]/.test(password);
+        const lowercase = /[a-z]/.test(password);
+        const specialChar = /[!@#$%^&*(),.?":{}|<>]/.test(password);
+        const number = /[0-9]/.test(password);
+    
+        return minLength && uppercase && lowercase && specialChar && number;
+    };
+    
     return (
-        <ImageBackground style={styles.container}
-            source={require('../../assets/iit_tp.jpg')}>
-            {(!Loading) && <View style={styles.rectangle}>
-                <View style={{ flexDirection: 'row', padding: 10, alignItems: "center", justifyContent: "space-between", }}>
-                    <TextInput
-                        style={styles.input}
-                        placeholder="Enter Password"
-                        secureTextEntry={!visible}
-                        value={password}
-                        onChangeText={setPassword}
-                    />
-                    <TouchableOpacity style={{
-                        alignItems: "center",
-
-                    }} onPress={() => { setVisible(!visible) }}><Text>{visible ? 'Hide' : 'Show'}</Text></TouchableOpacity>
+        <ImageBackground style={styles.container} source={require('../../assets/iit_tp.jpg')}>
+            {!Loading && (
+                <View style={styles.rectangle}>
+                    <View style={{ flexDirection: 'row', padding: 10, alignItems: "center", justifyContent: "space-between" }}>
+                        <TextInput
+                            style={styles.input}
+                            placeholder="Enter Password"
+                            secureTextEntry={!visible}
+                            value={password}
+                            onChangeText={(text) => {
+                                setPassword(text);
+                                setMatch(text === passwordInput);
+                            }}
+                        />
+                        <TouchableOpacity style={{ alignItems: "center" }} onPress={() => setVisible(!visible)}>
+                            <Text>{visible ? 'Hide' : 'Show'}</Text>
+                        </TouchableOpacity>
+                    </View>
+    
+                    <View style={{ flexDirection: 'row', padding: 10, alignItems: "center", justifyContent: "space-between" }}>
+                        <TextInput
+                            style={styles.input}
+                            placeholder="Confirm Password"
+                            secureTextEntry={!visible1}
+                            value={passwordInput}
+                            onChangeText={(text) => {
+                                setPasswordInput(text);
+                                setMatch(text === password);
+                            }}
+                        />
+                        <TouchableOpacity style={{ alignItems: "center" }} onPress={() => setVisible1(!visible1)}>
+                            <Text>{visible1 ? 'Hide' : 'Show'}</Text>
+                        </TouchableOpacity>
+                    </View>
+    
+                    {/* Show password validation errors */}
+                    {!validatePassword(password) && password.length > 0 && (
+                        <Text style={styles.passwordRequirements}>
+                            Password must be at least 6 characters long and contain at least 1 uppercase, 1 lowercase, 1 number, and 1 special character.
+                        </Text>
+        
+                    )}
+                    
+                    {/* Show error if passwords don't match */}
+                    {!match && passwordInput.length > 0 && <Text style={{ color: 'red' }}>Passwords do not match</Text>}
+    
+                    <TouchableOpacity
+                        style={styles.button}
+                        onPress={Finish}
+                        disabled={!match || !validatePassword(password)}
+                    >
+                        <Text style={styles.buttonText}>Finish</Text>
+                    </TouchableOpacity>
                 </View>
-                <View style={{ flexDirection: 'row', padding: 10, alignItems: "center", justifyContent: "space-between", }}>
-                    {/**I have an issue here updates not happening simultaneously */}
-
-                    <TextInput
-                        style={styles.input}
-                        placeholder="Re-Enter Password"
-                        secureTextEntry={!visible1}
-                        value={passwordInput}
-                        onChangeText={setPasswordInput}
-                    />
-                    <TouchableOpacity style={{ alignItems: "center" }} onPress={() => { setVisible1(!visible1) }}><Text>{visible1 ? 'Hide' : 'Show'}</Text></TouchableOpacity>
+            )}
+    
+            {Loading && (
+                <View style={styles.rectangle}>
+                    <Text style={styles.title}>User Created.</Text>
+                    <TouchableOpacity style={styles.button} onPress={Switching}>
+                        <Text style={styles.buttonText}>Login Page</Text>
+                    </TouchableOpacity>
                 </View>
-                {(!match) && <Text>Passwords do not match</Text>}
-                <TouchableOpacity style={styles.button} onPress={Finish}>
-                    <Text style={styles.buttonText}>Finish</Text></TouchableOpacity>
-            </View>}
-            {(Loading) && <View style={styles.rectangle}>
-                <Text style={styles.title}>User Created.</Text>
-                <TouchableOpacity style={styles.button} onPress={Switching}>
-                    <Text style={styles.buttonText}>Login Page</Text>
-                </TouchableOpacity></View>
-            }
-        </ImageBackground>);
+            )}
+        </ImageBackground>
+    );
 }
 
 
@@ -154,4 +191,11 @@ const styles = StyleSheet.create({
         fontSize: 16,
         fontWeight: 'bold',
     },
+    passwordRequirements : {
+        color: 'red',
+        fontSize: 12,
+        marginVertical: 10,
+        marginBottom:8
+,        textAlign: 'center',
+    }
 });

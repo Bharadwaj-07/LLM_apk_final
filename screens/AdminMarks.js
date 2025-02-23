@@ -86,6 +86,10 @@ const AdminMarks = ({ navigation, route }) => {
         if (!selectedTest) {
             return Alert.alert("Error", "Please select a test.");
         }
+        if (!maxMarksLocal[selectedTest] || maxMarksLocal[selectedTest].trim() === "") {
+            alert("Please enter Maximum marks before submitting.");
+            return
+        }
         // 
         const validMarks = students.some(student => {
             const studentMarks = parseInt(student[selectedTest], 10);
@@ -108,6 +112,12 @@ const AdminMarks = ({ navigation, route }) => {
 
         if (hasEmptyMarks) {
             return Alert.alert("Error", `Some students have empty marks for ${selectedTest}. Please fill in all marks.`);
+        }
+        const hasExceedingMarks = students.some(student =>
+            Number(student[selectedTest]) > Number(maxMarksLocal[selectedTest])
+        );
+        if (hasExceedingMarks) {
+            return Alert.alert("Alert", `Some students have marks greater than the maximum allowed ( ${maxMarksLocal[selectedTest]} ). Please correct them.`);
         }
 
         try {
@@ -168,9 +178,21 @@ const AdminMarks = ({ navigation, route }) => {
                                         value={maxMarksLocal[selectedTest] === "-" ? "" : String(maxMarksLocal[selectedTest])}
                                         onChangeText={(value) => setMaxMarksLocal(prev => ({ ...prev, [selectedTest]: value }))}
                                     />
-                                    <TouchableOpacity style={styles.updateButton} onPress={updateMaxMarks}>
+                                    {/* <TouchableOpacity style={styles.updateButton} onPress={updateMaxMarks}>
                                         <Text style={styles.updateButtonText}>Update Max Marks</Text>
-                                    </TouchableOpacity>
+                                    </TouchableOpacity> */}
+                                    <TouchableOpacity
+                                        style={styles.updateButton}
+                                        onPress={() => {
+                                            if (!maxMarksLocal[selectedTest] || maxMarksLocal[selectedTest].trim() === "") {
+                                                alert("Please enter valid marks before updating.");
+                                            } else {
+                                                updateMaxMarks();
+                                            }
+                                        }}
+                                    >
+                                        <Text style={styles.updateButtonText}>Update Max Marks</Text>
+                                  </TouchableOpacity>
                                 </View>
                             )}
 

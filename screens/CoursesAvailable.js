@@ -49,7 +49,7 @@ const CoursesAvailable = () => {
 
     return (
         <SafeAreaView style={styles.container}>
-            <ScrollView contentContainerStyle={styles.scrollViewContent}>
+            <ScrollView contentContainerStyle={[styles.scrollViewContent, { paddingBottom: 60 }]}>
                 {courses.length > 0 ? (
                     courses.map((item) => (
                         <CourseDetailsToJoin
@@ -104,4 +104,6 @@ const styles = StyleSheet.create({
     button: { flex: 1, paddingVertical: 10, alignItems: 'center' },
     activeButton: { backgroundColor: '#3C0A6B' },
     buttonText: { color: 'white', fontSize: 12, fontWeight: 'bold', marginTop: 3 },
+    scrollViewContent: { flexGrow: 1, paddingBottom: 60 }, // Ensure bottom spacing
+
 });

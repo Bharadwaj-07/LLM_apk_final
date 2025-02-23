@@ -25,6 +25,8 @@ export default function App() {
           headerTintColor: 'white',
           tabBarActiveTintColor: 'white',
           tabBarActiveBackgroundColor: '#3C0A6B',
+          tabBarInactiveTintColor: 'black',             // Inactive tab text color
+          tabBarInactiveBackgroundColor: 'white',
         }}
       >
         <Tab.Screen
